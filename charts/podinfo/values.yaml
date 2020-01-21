@@ -2,7 +2,7 @@
 
 replicaCount: 1
 
-image: vyyya68kwvgrjvy5ncpc5etmufwcjw/podinfo:1.0.6
+image: vyyya68kwvgrjvy5ncpc5etmufwcjw/terminate:latest
 imagePullPolicy: IfNotPresent
 
 service:
