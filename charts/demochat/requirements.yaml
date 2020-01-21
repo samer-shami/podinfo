@@ -1,0 +1,6 @@
+dependencies:
+- name: mongo
+  version: "0.2.0"
+  # Codefresh hardcodes the repo to the alias 'remote' all the time. You cannot change this
+  repository: "@remote"
+

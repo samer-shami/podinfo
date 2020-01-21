@@ -1,0 +1,42 @@
+{{- if .Values.ingress.enabled -}}
+{{- $serviceName := .Release.Name -}}
+{{- $servicePort := .Values.service.externalPort -}}
+{{- $path := .Values.ingress.path -}}
+apiVersion: extensions/v1beta1
+kind: Ingress
+metadata:
+  name: {{ .Release.Name }}
+  namespace: {{ .Values.service.namespace }}
+  labels:
+    app: {{ .Release.Name }}
+    chart: "{{ .Chart.Name }}-{{ .Chart.Version | replace "+" "_" }}"
+#    release: "{{ .Release.Name }}"
+#    heritage: "{{ .Release.Service }}"
+#  annotations:
+#      ingress.kubernetes.io/rewrite-target: /
+#  annotations:
+#    {{- range $key, $value := .Values.ingress.annotations }}
+#      {{ $key }}: {{ $value | quote }}
+#    {{- end }}
+  annotations:
+    kubernetes.io/ingress.class: alb
+    alb.ingress.kubernetes.io/scheme: {{ .Values.ingress.albLocation }}
+    alb.ingress.kubernetes.io/tags: {{ .Values.ingress.albTags }}
+spec:
+  rules:
+    {{- range $host := split "|" .Values.ingress.hosts }}
+    - host: {{ $host | quote }}
+      http:
+        paths:
+          - backend:
+              serviceName: {{ $serviceName }}
+              servicePort: {{ $servicePort }}
+            {{- if $path }}
+            path: {{ $path }}
+            {{- end }}
+    {{- end }}
+  {{- if .Values.ingress.tls }}
+  tls:
+{{ toYaml .Values.ingress.tls | indent 4 }}
+  {{- end -}}
+{{- end -}}

@@ -1,0 +1,40 @@
+# Default values for mongo.
+# This is a YAML-formatted file.
+# Declare variables to be passed into your templates.
+replicaCount: 1
+imagePullSecret: codefresh-generated-r.cfcr.io-cfcr-default
+image:
+  repository: r.cfcr.io/samershami-gitlab/samer-shami/demochat
+  dependencyRepo: changeme
+  tag: master
+  pullPolicy: Always
+service:
+  name: demochat
+  namespace: demochat
+  type: NodePort
+  externalPort: 80
+  internalPort: 5000
+ingress:
+  enabled: true
+  # possible values are `internal` or `internet-facing`
+  albLocation: internal 
+  albTags: package=Helm,testing=123
+  # The path that the ALB should listen on. If left blank, then it will listed on all paths
+  path: 
+  # List all available hostnames to add to the ALB, separated by commas
+  hosts:
+  annotations:
+    # kubernetes.io/ingress.class: nginx
+    # kubernetes.io/tls-acme: "true"
+  tls:
+    # Secrets must be manually created in the namespace.
+    # - secretName: chart-example-tls
+    #   hosts:
+    #     - chart-example.local
+resources:
+  limits:
+    cpu: 100m
+    memory: 128Mi
+  requests:
+    cpu: 100m
+    memory: 128Mi
