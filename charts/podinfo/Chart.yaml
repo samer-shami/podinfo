@@ -1,8 +1,8 @@
 apiVersion: v1
-appVersion: "3.1.6"
+appVersion: "3.1.7"
 description: Podinfo Helm chart for Kubernetes
-name: podinfo-alt
-version: 1.0.0
+name: podinfo2
+version: 1.0.1
 home: https://github.com/samer-shami/podinfo
 sources:
 - https://github.com/samer-shami/podinfo
