@@ -3,9 +3,9 @@ appVersion: "3.1.5"
 description: Podinfo Helm chart for Kubernetes
 name: podinfo
 version: 1.0.0
-home: https://github.com/stefanprodan/podinfo
+home: https://github.com/samer-shami/podinfo
 sources:
-- https://github.com/stefanprodan/podinfo
+- https://github.com/samer-shami/podinfo
 maintainers:
   - name: stefanprodan
     email: stefanprodan@users.noreply.github.com
