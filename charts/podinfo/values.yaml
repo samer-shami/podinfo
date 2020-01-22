@@ -3,7 +3,7 @@
 replicaCount: 1
 
 image: vyyya68kwvgrjvy5ncpc5etmufwcjw/podinfo:1.0.8
-imagePullPolicy: IfNotPresent
+imagePullPolicy: Always
 
 service:
   type: ClusterIP
