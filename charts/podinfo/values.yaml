@@ -12,10 +12,10 @@ service:
   nodePort: 31198
 
 hpa:
-  enabled: false
-  maxReplicas: 10
+  enabled: true
+  maxReplicas: 3
   # average total CPU usage per pod (1-100)
-  cpu:
+  cpu: 99
   # average memory usage per pod (100Mi-1Gi)
   memory:
 
