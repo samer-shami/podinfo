@@ -4,7 +4,7 @@ replicaCount: 1
 
 image:
   name: vyyya68kwvgrjvy5ncpc5etmufwcjw/podinfo
-  tag: 1.0.0
+  tag: 1.0.12
   pullPolicy: Always
 
 service:
